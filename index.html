@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Wave — Студия веб-дизайна</title>
+    <!-- Подключаем внешний CSS-файл -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- ======================== -->
+    <!-- ШАПКА САЙТА (HEADER)     -->
+    <!-- ======================== -->
+    <header>
+        <div class="container">
+            <!-- Логотип кликабельный, ведёт на верх страницы -->
+            <a href="#" class="logo">Digital<span>Wave</span></a>
+            
+            <!-- Навигация -->
+            <nav>
+                <ul id="navMenu">
+                    <li><a href="#home">Главная</a></li>
+                    <li><a href="#services">Услуги</a></li>
+                    <li><a href="#portfolio">Портфолио</a></li>
+                    <li><a href="#contact">Контакты</a></li>
+                </ul>
+            </nav>
+
+            <!-- Кнопка бургер-меню (видна только на мобильных) -->
+            <button class="hamburger" id="hamburgerBtn" aria-label="Открыть меню">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </header>
+
+    <!-- ======================== -->
+    <!-- ГЛАВНЫЙ ЭКРАН (HERO)     -->
+    <!-- ======================== -->
+    <section class="hero" id="home">
+        <div class="container">
+            <h1>Создаём цифровые продукты, которые вдохновляют</h1>
+            <p>Разработка современных сайтов и приложений для вашего бизнеса. Дизайн, код, результат.</p>
+            <!-- Кнопка плавно прокручивает к секции контактов -->
+            <a href="#contact" class="btn">Обсудить проект</a>
+        </div>
+    </section>
+
+    <!-- ======================== -->
+    <!-- СЕКЦИЯ УСЛУГ (SERVICES)  -->
+    <!-- ======================== -->
+    <section class="services" id="services">
+        <div class="container">
+            <div class="section-title">
+                <h2>Наши услуги</h2>
+                <p>Полный цикл разработки — от идеи до запуска</p>
+            </div>
+
+            <div class="services-grid">
+                <!-- Карточка 1 -->
+                <div class="service-card">
+                    <span class="service-icon">🎨</span>
+                    <h3>Веб-дизайн</h3>
+                    <p>Уникальные макеты, ориентированные на пользователя. Прототипирование и визуальная концепция.</p>
+                </div>
+                <!-- Карточка 2 -->
+                <div class="service-card">
+                    <span class="service-icon">💻</span>
+                    <h3>Разработка</h3>
+                    <p>Вёрстка, программирование и посадка на CMS. Чистый код и адаптивность под все устройства.</p>
+                </div>
+                <!-- Карточка 3 -->
+                <div class="service-card">
+                    <span class="service-icon">📱</span>
+                    <h3>Мобильные приложения</h3>
+                    <p>Кроссплатформенная разработка на React Native. Быстро, надёжно, удобно.</p>
+                </div>
+                <!-- Карточка 4 -->
+                <div class="service-card">
+                    <span class="service-icon">🚀</span>
+                    <h3>SEO-продвижение</h3>
+                    <p>Оптимизация, которая выводит сайт в топ поисковых систем и привлекает клиентов.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ======================== -->
+    <!-- СЕКЦИЯ ПОРТФОЛИО         -->
+    <!-- ======================== -->
+    <section class="portfolio" id="portfolio">
+        <div class="container">
+            <div class="section-title">
+                <h2>Последние проекты</h2>
+                <p>Некоторые работы, которыми мы гордимся</p>
+            </div>            
+        
+            <div class="portfolio-grid">
+                <!-- Проект 1 -->
+                <div class="portfolio-item">
+                    <div class="portfolio-img">🌐</div>
+                    <div class="portfolio-info">
+                        <h3>Интернет-магазин "EcoStyle"</h3>
+                        <p>Дизайн, разработка на Shopify, интеграция платежей</p>
+                    </div>
+                </div>
+                <!-- Проект 2 -->
+                <div class="portfolio-item">
+                    <div class="portfolio-img">📊</div>
+                    <div class="portfolio-info">
+                        <h3>Аналитическая панель</h3>
+                        <p>Дашборд для финансового стартапа. React + D3.js</p>
+                    </div>
+                </div>
+                <!-- Проект 3 -->
+                <div class="portfolio-item">
+                    <div class="portfolio-img">🎓</div>
+                    <div class="portfolio-info">
+                        <h3>Образовательная платформа</h3>
+                        <p>Лендинг, личный кабинет, система тестирования</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ======================== -->
+    <!-- СЕКЦИЯ КОНТАКТОВ         -->
+    <!-- ======================== -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <div class="contact-wrapper">
+                <!-- Текстовая часть -->
+                <div class="contact-info">
+                    <h3>Готовы начать?</h3>
+                    <p>Оставьте заявку, и мы свяжемся с вами в ближайшее время, чтобы обсудить детали проекта.</p>
+                    <p style="color: var(--gray); margin-top: 10px;">
+                        📧 hello@digitalwave.ru<br>
+                        📱 +7 (999) 123-45-67
+                    </p>
+                </div>
+
+                <!-- Форма обратной связи -->
+                <form class="contact-form" id="contactForm">
+                    <input type="text" placeholder="Ваше имя" required>
+                    <input type="email" placeholder="Email" required>
+                    <textarea placeholder="Расскажите о проекте..." required></textarea>
+                    <button type="submit" class="btn">Отправить</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- ======================== -->
+    <!-- ПОДВАЛ (FOOTER)          -->
+    <!-- ======================== -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Digital Wave. Все права защищены. Сделано с ❤️</p>
+        </div>
+    </footer>
+
+    <!-- Подключаем внешний JavaScript-файл перед закрытием body -->
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,391 @@
+/* === 1. БАЗОВЫЕ НАСТРОЙКИ И ПЕРЕМЕННЫЕ === */
+:root {
+    /* Переменные цветов: меняя их здесь, цвет изменится везде на сайте */
+    --primary: #6C63FF;       /* Основной фиолетовый */
+    --primary-dark: #4A42E8;  /* Темно-фиолетовый для наведения */
+    --dark: #1E1E2C;          /* Цвет фона */
+    --darker: #15151E;        /* Более темный фон */
+    --light: #E6E6E6;         /* Светлый текст */
+    --gray: #9A9AA9;          /* Серый текст */
+    --white: #FFFFFF;         /* Белый */
+    --card-bg: #252536;       /* Фон карточек */
+    --border-radius: 12px;    /* Скругление углов */
+}
+
+/* Сброс стандартных отступов */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Плавная прокрутка для всего документа */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Основные настройки текста и фона */
+body {
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    background-color: var(--dark);
+    color: var(--light);
+    line-height: 1.6;
+    overflow-x: hidden; /* Убираем горизонтальную прокрутку */
+}
+
+/* Контейнер — ограничивает ширину контента и центрирует его */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 24px;
+}
+
+/* === 2. ШАПКА САЙТА (HEADER) === */
+header {
+    position: fixed;  /* Шапка всегда висит сверху при прокрутке */
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: rgba(30, 30, 44, 0.85); /* Полупрозрачный фон */
+    backdrop-filter: blur(12px);         /* Размытие фона позади */
+    z-index: 1000;  /* Чтобы шапка была поверх всего контента */
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    transition: background 0.3s ease;
+}
+
+/* Внутренняя структура шапки: логотип слева, меню справа */
+header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 70px;
+}
+
+/* Логотип */
+.logo {
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: var(--white);
+    text-decoration: none;
+    letter-spacing: 1px;
+}
+.logo span {
+    color: var(--primary); /* Окрашиваем часть логотипа в фирменный цвет */
+}
+
+/* Навигационное меню */
+nav ul {
+    display: flex;
+    list-style: none;
+    gap: 32px; /* Расстояние между пунктами меню */
+}
+
+nav a {
+    color: var(--gray);
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s ease;
+    position: relative;
+}
+
+nav a:hover {
+    color: var(--white);
+}
+
+/* Подчеркивание при наведении */
+nav a::after {
+    content: '';
+    position: absolute;
+    bottom: -6px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--primary);
+    transition: width 0.3s ease;
+}
+nav a:hover::after {
+    width: 100%;
+}
+
+/* Кнопка-гамбургер (бургер-меню) для мобильных устройств — по умолчанию скрыта */
+.hamburger {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+    gap: 5px;
+    background: none;
+    border: none;
+    padding: 5px;
+}
+.hamburger span {
+    width: 28px;
+    height: 2px;
+    background: var(--white);
+    transition: 0.3s;
+}
+
+/* === 3. ГЛАВНЫЙ ЭКРАН (HERO) === */
+.hero {
+    padding: 180px 0 100px; /* Отступ сверху с учетом фиксированной шапки */
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Декоративное свечение на фоне */
+.hero::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle at 50% 50%, rgba(108, 99, 255, 0.08), transparent 60%);
+    animation: rotateGlow 20s linear infinite;
+}
+@keyframes rotateGlow {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.hero > * {
+    position: relative;
+    z-index: 2;
+}
+
+.hero h1 {
+    font-size: 3.5rem;
+    font-weight: 800;
+    margin-bottom: 20px;
+    background: linear-gradient(135deg, var(--white), var(--primary));
+    -webkit-background-clip: text;  /* Градиентный текст */
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.hero p {
+    font-size: 1.2rem;
+    color: var(--gray);
+    max-width: 600px;
+    margin: 0 auto 40px;
+}
+/* Кнопка призыва к действию */
+.btn {
+    display: inline-block;
+    padding: 14px 36px;
+    background: var(--primary);
+    color: var(--white);
+    text-decoration: none;
+    border-radius: 50px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    border: none;
+    cursor: pointer;
+    font-size: 1rem;
+}
+.btn:hover {
+    background: var(--primary-dark);
+    transform: translateY(-3px);
+    box-shadow: 0 20px 40px rgba(108, 99, 255, 0.3);
+}
+
+/* === 4. СЕКЦИЯ УСЛУГ === */
+.services {
+    padding: 100px 0;
+}
+
+/* Заголовок секции */
+.section-title {
+    text-align: center;
+    margin-bottom: 60px;
+}
+.section-title h2 {
+    font-size: 2.5rem;
+    margin-bottom: 12px;
+}
+.section-title p {
+    color: var(--gray);
+}
+
+/* Сетка карточек услуг */
+.services-grid {
+    display: grid;
+    /* Адаптивная сетка: карточки сами подстраиваются под ширину экрана */
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+}
+
+/* Карточка услуги */
+.service-card {
+    background: var(--card-bg);
+    padding: 40px 30px;
+    border-radius: var(--border-radius);
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.03);
+}
+.service-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
+}
+
+/* Иконка (используем эмодзи для простоты, без внешних библиотек) */
+.service-icon {
+    font-size: 3rem;
+    margin-bottom: 20px;
+    display: block;
+}
+.service-card h3 {
+    margin-bottom: 12px;
+    font-size: 1.3rem;
+}
+.service-card p {
+    color: var(--gray);
+    font-size: 0.95rem;
+}
+
+/* === 5. СЕКЦИЯ ПОРТФОЛИО === */
+.portfolio {
+    padding: 100px 0;
+    background: var(--darker); /* Чередуем фон для визуального разделения */
+}
+.portfolio-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 24px;
+}
+.portfolio-item {
+    background: var(--card-bg);
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    transition: transform 0.3s ease;
+}
+.portfolio-item:hover {
+    transform: scale(1.02);
+}
+/* Заглушка изображения (в реальном проекте здесь будет <img>) */
+.portfolio-img {
+    height: 200px;
+    background: linear-gradient(135deg, #2a2a3a, #1e1e2c);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 3rem;
+    color: var(--primary);
+}
+.portfolio-info {
+    padding: 24px;
+}
+.portfolio-info h3 {
+    margin-bottom: 6px;
+}
+.portfolio-info p {
+    color: var(--gray);
+    font-size: 0.9rem;
+}
+
+/* === 6. СЕКЦИЯ КОНТАКТОВ === */
+.contact {
+    padding: 100px 0;
+}
+.contact-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+}
+.contact-info h3 {
+    font-size: 2rem;
+    margin-bottom: 16px;
+}
+.contact-info p {
+    color: var(--gray);
+    margin-bottom: 24px;
+}
+
+/* Простая контактная форма */
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+.contact-form input,
+.contact-form textarea {
+    width: 100%;
+    padding: 14px 18px;
+    background: var(--card-bg);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: var(--border-radius);
+    color: var(--white);
+    font-family: inherit;
+    font-size: 1rem;
+    transition: border-color 0.3s ease;
+}
+.contact-form input:focus,
+.contact-form textarea:focus {
+    outline: none;
+    border-color: var(--primary);
+}
+.contact-form textarea {
+    min-height: 120px;
+    resize: vertical;
+}
+.contact-form button {
+    align-self: flex-start;
+}
+
+/* === 7. ПОДВАЛ (FOOTER) === */
+footer {
+    background: var(--darker);
+    text-align: center;
+    padding: 30px 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    color: var(--gray);
+    font-size: 0.9rem;
+}
+
+/* === 8. АДАПТИВНОСТЬ (МЕДИА-ЗАПРОСЫ) === */
+/* Эти правила срабатывают на экранах меньше 768px (планшеты и телефоны) */
+@media (max-width: 768px) {
+    /* Показываем бургер-кнопку */
+    .hamburger {
+        display: flex;
+    }
+/* Меню становится вертикальным и прячется */
+    nav ul {
+        position: fixed;
+        top: 70px;
+        left: 0;
+        width: 100%;
+        background: rgba(21, 21, 30, 0.98);
+        flex-direction: column;
+        align-items: center;
+        padding: 30px 0;
+        gap: 24px;
+        transform: translateY(-150%); /* Уезжает вверх */
+        transition: transform 0.4s ease;
+        backdrop-filter: blur(12px);
+    }
+
+    /* Когда добавлен класс .active, меню выезжает */
+    nav ul.active {
+        transform: translateY(0);
+    }
+
+    .hero h1 {
+        font-size: 2.2rem;
+    }
+    .hero p {
+        font-size: 1rem;
+    }
+
+    /* Контакты в колонку */
+    .contact-wrapper {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+
+    .section-title h2 {
+        font-size: 1.9rem;
+    }
+}
